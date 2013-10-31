@@ -64,7 +64,7 @@
 
 #include <asm/futex.h>
 
-#include "rtmutex_common.h"
+#include "locking/rtmutex_common.h"
 
 int __read_mostly futex_cmpxchg_enabled;
 
