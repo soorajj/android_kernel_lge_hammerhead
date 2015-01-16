@@ -17,24 +17,19 @@ fi
 sed -i '/\/sys\/block\/mmcblk0\/queue\/scheduler/d' init.hammerhead.rc
 SCHED=`grep selected.1 /tmp/aroma/disk.prop | cut -d '=' -f2`
 if [ $SCHED = 1 ]; then
-        echo "" >> init.hammerhead.rc
-        echo "    write /sys/block/mmcblk0/queue/scheduler cfq" >> init.hammerhead.rc
+	sed -i '/on property:init.svc.bootanim=stopped/a \    write /sys/block/mmcblk0/queue/scheduler cfq\' init.hammerhead.rc
 	echo "Ioshed CFQ enabled" >> $SOOPLUS_LOGFILE;
 elif [ $SCHED = 2 ]; then
-        echo "" >> init.hammerhead.rc
-        echo "    write /sys/block/mmcblk0/queue/scheduler row" >> init.hammerhead.rc
+	sed -i '/on property:init.svc.bootanim=stopped/a \    write /sys/block/mmcblk0/queue/scheduler row\' init.hammerhead.rc
 	echo "Ioshed ROW enabled" >> $SOOPLUS_LOGFILE;
 elif [ $SCHED = 3 ]; then
-        echo "" >> init.hammerhead.rc
-        echo "    write /sys/block/mmcblk0/queue/scheduler deadline" >> init.hammerhead.rc
+	sed -i '/on property:init.svc.bootanim=stopped/a \    write /sys/block/mmcblk0/queue/scheduler deadline\' init.hammerhead.rc
 	echo "Ioshed DEADLINE enabled" >> $SOOPLUS_LOGFILE;
 elif [ $SCHED = 4 ]; then
-        echo "" >> init.hammerhead.rc
-        echo "    write /sys/block/mmcblk0/queue/scheduler noop" >> init.hammerhead.rc
+	sed -i '/on property:init.svc.bootanim=stopped/a \    write /sys/block/mmcblk0/queue/scheduler noop\' init.hammerhead.rc
 	echo "Ioshed NOOP enabled" >> $SOOPLUS_LOGFILE;
 elif [ $SCHED = 5 ]; then
-        echo "" >> init.hammerhead.rc
-        echo "    write /sys/block/mmcblk0/queue/scheduler fiops" >> init.hammerhead.rc
+	sed -i '/on property:init.svc.bootanim=stopped/a \    write /sys/block/mmcblk0/queue/scheduler fiops\' init.hammerhead.rc
 	echo "Ioshed FIOPS enabled" >> $SOOPLUS_LOGFILE;
 fi
 
