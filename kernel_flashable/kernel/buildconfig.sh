@@ -9,22 +9,22 @@ echo -e "Enter vibration strength (0 to 100).  Default is 63.\n" >> $CONFIGFILE
 echo "GVIB=63" >> $CONFIGFILE;
 
 #Wake Gestures
-WG=`grep "selected.0" /tmp/aroma/wg.prop | cut -d '=' -f2`
-echo -e "\n\n##### Wake Gestures Settings #####\n# 0 to disable wake gestures" >> $CONFIGFILE
-echo -e "# 1 to enable wake gestures\n" >> $CONFIGFILE
-if [ $WG = 1 ]; then
-  echo "WG=1" >> $CONFIGFILE;
-else
-  echo "WG=0" >> $CONFIGFILE;
-fi
+#WG=`grep "selected.0" /tmp/aroma/wg.prop | cut -d '=' -f2`
+#echo -e "\n\n##### Wake Gestures Settings #####\n# 0 to disable wake gestures" >> $CONFIGFILE
+#echo -e "# 1 to enable wake gestures\n" >> $CONFIGFILE
+#if [ $WG = 1 ]; then
+#  echo "WG=1" >> $CONFIGFILE;
+#else
+#  echo "WG=0" >> $CONFIGFILE;
+#fi
 
-if [ $WG = 3 ]; then
-  rm /tmp/aroma/gest.prop;
-fi
+#if [ $WG = 3 ]; then
+#  rm /tmp/aroma/gest.prop;
+#fi
 
-if [ ! -e /tmp/aroma/gest.prop ]; then
-  touch /tmp/aroma/gest.prop;
-fi
+#if [ ! -e /tmp/aroma/gest.prop ]; then
+#  touch /tmp/aroma/gest.prop;
+#fi
 
 #S2W
 SR=`grep "item.1.1" /tmp/aroma/gest.prop | cut -d '=' -f2`
@@ -150,6 +150,16 @@ if [ $MPS = 1 ]; then
   echo "MPS=1" >> $CONFIGFILE;
 else
   echo "MPS=0" >> $CONFIGFILE;
+fi
+
+#Backlight
+BL=`grep "item.0.5" /tmp/aroma/mods.prop | cut -d '=' -f2`
+echo -e "\n\n##### Backlight Settings #####\n# 0 to for stock backlight" >> $CONFIGFILE
+echo -e "# 1 for dimmer backlight\n" >> $CONFIGFILE
+if [ $BL = 1 ]; then
+  echo "BL=1" >> $CONFIGFILE;
+else
+  echo "BL=0" >> $CONFIGFILE;
 fi
 
 #CPU Governor

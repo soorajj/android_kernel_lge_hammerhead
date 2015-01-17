@@ -26,13 +26,16 @@ echo $GVIB > /sys/class/timed_output/vibrator/amp
 echo Vibration strength\: $GVIB >> $SOOPLUS_LOGFILE;
 
 #Set Wake Gestures
-if [ "`grep WG=1 $SOOPLUS_CONF`" ]; then
-  echo 1 > /sys/android_touch/wake_gestures
-  echo Wake gestures enabled >> $SOOPLUS_LOGFILE;
-else
-  echo 0 > /sys/android_touch/wake_gestures
-  echo Wake gestures disabled >> $SOOPLUS_LOGFILE;
-fi
+#if [ "`grep WG=1 $SOOPLUS_CONF`" ]; then
+#  echo 1 > /sys/android_touch/wake_gestures
+#  echo Wake gestures enabled >> $SOOPLUS_LOGFILE;
+#else
+#  echo 0 > /sys/android_touch/wake_gestures
+#  echo Wake gestures disabled >> $SOOPLUS_LOGFILE;
+#fi
+
+#disable wake gestures on lollipop until xposed work on lollipop
+echo 0 > /sys/android_touch/wake_gestures
 
 #Set Sweep2wake
 S2W="`grep SWEEP2WAKE $SOOPLUS_CONF | cut -d '=' -f2`"
@@ -158,6 +161,15 @@ fi
 READAHEAD=`grep "READAHEAD" $SOOPLUS_CONF | cut -d '=' -f2`
 echo $READAHEAD > /sys/block/mmcblk0/queue/read_ahead_kb
 echo Readahead size\: $READAHEAD >> $SOOPLUS_LOGFILE;
+
+#Set Backlight
+if [ "`grep BL=1 $SOOPLUS_CONF`" ]; then
+  echo 1 > /sys/module/lm3630_bl/parameters/backlight_dimmer
+  echo Backlight dimmer enabled >> $SOOPLUS_LOGFILE;
+else
+  echo 0 > /sys/module/lm3630_bl/parameters/backlight_dimmer
+  echo Backlight dimmer disabled >> $SOOPLUS_LOGFILE;
+fi
 
 #Set Faux Sound
 #Quality profile

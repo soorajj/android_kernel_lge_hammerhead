@@ -75,7 +75,7 @@ alert(
 selectbox(
   "Sweep2Wake and DoubleTap2Wake","Enabling S2W or DT2W will cause battery drain. This can be minimized with the \"Power button toggles S2W/DT2W\" option, which temporarily disables S2W/DT2W, or by enabling \"S2W/DT2W timeout\"","","wg.prop",
 
-  "Wake Gestures support","Perform actions or launch apps on gesture (requires Wake Gestures Xposed module or nothing will happen)",0,
+  "Wake Gestures support","Perform actions or launch apps on gesture (requires Wake Gestures Xposed module or nothing will happen, so disable until xposed framework works on lollipop)",0,
   "Traditional S2W/DT2W","S2W/DT2W wake screen only",0,
   "Disable S2W/DT2W","",1
 );
@@ -170,7 +170,8 @@ checkbox(
   "Enable USB fastcharge","",0,
   "f2fs & ext4 all","f2fs & ext4 filesytem support for cache, data & system",0,
   "Bricked MPdecision touch boost","select for butter smoothness: unselect for more battery",0,
-  "multicore power saving","this will group task into least possible cores",1
+  "multicore power saving","this will group task into least possible cores",1,
+  "Backlight dimmer","Allows reduced screen brightness",0
 );
 
 selectbox(
