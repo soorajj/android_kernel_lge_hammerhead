@@ -175,6 +175,18 @@ checkbox(
   "Bricked MPdecision touch boost","select for butter smoothness: unselect for more battery",0
 );
 
+if file_getprop("/tmp/aroma/mods.prop","item.0.3") == "0" 
+  && file_getprop("/tmp/aroma/mods.prop","item.0.6") == "1"
+then
+alert(
+  "PLEASE NOTE:",
+  "You can't enable Bricked MPdecision touch boost unless Bricked Mpdecision is enabled",
+  "@alert",
+  "OK"
+);
+back("1");
+endif;
+
 selectbox(
   "Governor Settings","<b>Select the CPU Governor</b>","","cpu.prop",
   "ondemand governor","Stock",1,
