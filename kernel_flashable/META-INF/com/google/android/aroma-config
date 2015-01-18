@@ -169,9 +169,10 @@ checkbox(
   "Other settings","<b>Select the mods you want to install</b>","@personalize","mods.prop",
   "Enable USB fastcharge","",0,
   "f2fs & ext4 all","f2fs & ext4 filesytem support for cache, data & system",0,
-  "Bricked MPdecision touch boost","select for butter smoothness: unselect for more battery",0,
+  "Enable Bricked mpdecision","Enable's bricked MPdecision, orelse qcom mpdecision will be enabled",0,
   "multicore power saving","this will group task into least possible cores",1,
-  "Backlight dimmer","Allows reduced screen brightness",0
+  "Backlight dimmer","Allows reduced screen brightness",0,
+  "Bricked MPdecision touch boost","select for butter smoothness: unselect for more battery",0
 );
 
 selectbox(

@@ -14,6 +14,13 @@ if [ "$F2FS" = 1 ]; then
 	echo "all f2fs & ext4 enabled" >> $SOOPLUS_LOGFILE;
 fi
 
+BMPDEC=`grep "item.0.3" /tmp/aroma/mods.prop | cut -d '=' -f2`
+if [ "$BMPDEC" = 0 ]; then
+	cp -f /tmp/hammerhead ./init.hammerhead.rc
+	chmod 750 init.hammerhead.rc
+	echo "qcom mpdec enabled" >> $SOOPLUS_LOGFILE;
+fi
+
 sed -i '/\/sys\/block\/mmcblk0\/queue\/scheduler/d' init.hammerhead.rc
 SCHED=`grep selected.1 /tmp/aroma/disk.prop | cut -d '=' -f2`
 if [ $SCHED = 1 ]; then

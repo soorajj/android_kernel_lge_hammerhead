@@ -97,6 +97,15 @@ else
   echo USB Fastcharge disabled >> $SOOPLUS_LOGFILE;
 fi
 
+#Set Bricked MPdecision on/off
+if [ "`grep BMPDEC=1 $SOOPLUS_CONF`" ]; then
+  echo 1 > /sys/kernel/msm_mpdecision/conf/enabled
+  echo "Bricked MPdecision & thermal enabled" >> $SOOPLUS_LOGFILE;
+else
+  echo 0 > /sys/kernel/msm_mpdecision/conf/enabled
+  echo "Bricked MPdecision disabled and qcom mpdec and thermal enabled" >> $SOOPLUS_LOGFILE;
+fi
+
 #Set Bricked MPdecision touch boost
 if [ "`grep MPTB=1 $SOOPLUS_CONF`" ]; then
   echo 1 > /sys/kernel/msm_mpdecision/conf/boost_enabled

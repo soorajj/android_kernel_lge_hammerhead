@@ -12,11 +12,13 @@ if [ ! -e /system/etc/init.d ]; then
   chmod -R 755 /system/etc/init.d
 fi;
 
-if [ -e /system/bin/mpdecision ] ; then
+BMPDEC=`grep "item.0.3" /tmp/aroma/mods.prop | cut -d '=' -f2`
+if [ "$BMPDEC" = 1 ]; then
 	mv /system/bin/mpdecision /system/bin/mpdecision_bck
 fi
 
-if [ -e /system/bin/thermal-engine-hh ] ; then
+BMPDEC=`grep "item.0.3" /tmp/aroma/mods.prop | cut -d '=' -f2`
+if [ "$BMPDEC" = 1 ]; then
 	mv /system/bin/thermal-engine-hh /system/bin/thermal-engine-hh_bck
 fi
 

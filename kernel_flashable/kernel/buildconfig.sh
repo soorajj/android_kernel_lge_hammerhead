@@ -135,7 +135,7 @@ else
 fi
 
 #Bricked MPdecision touch boost
-MPTB=`grep "item.0.3" /tmp/aroma/mods.prop | cut -d '=' -f2`
+MPTB=`grep "item.0.6" /tmp/aroma/mods.prop | cut -d '=' -f2`
 echo -e "\n\n##### Bricked MPdecision touch boost Settings ######\n# 1 to enable Bricked MPdecision touch boost\n# 0 to disable Bricked MPdecision touch boost\n" >> $CONFIGFILE
 if [ $MPTB = 1 ]; then
   echo "MPTB=1" >> $CONFIGFILE;
@@ -160,6 +160,16 @@ if [ $BL = 1 ]; then
   echo "BL=1" >> $CONFIGFILE;
 else
   echo "BL=0" >> $CONFIGFILE;
+fi
+
+#mpdec switch
+BMPDEC=`grep "item.0.3" /tmp/aroma/mods.prop | cut -d '=' -f2`
+echo -e "\n\n##### mpdec Settings #####\n# 0 for qcom mpdecision" >> $CONFIGFILE
+echo -e "# 1 for bricked mpdecision\n" >> $CONFIGFILE
+if [ $BMPDEC = 1 ]; then
+  echo "BMPDEC=1" >> $CONFIGFILE;
+else
+  echo "BMPDEC=0" >> $CONFIGFILE;
 fi
 
 #CPU Governor

@@ -199,9 +199,6 @@ delete_recursive("/system/etc/rngd");
 delete_recursive("/system/lib/modules");
 delete_recursive("/system/etc/sooplus.conf");
 
-set_perm(0, 0, 0777, "/tmp/systemcheck.sh");
-run_program("/tmp/systemcheck.sh");
-
 ui_print("Installing system files");
 package_extract_dir("system", "/system");
 
@@ -209,6 +206,11 @@ set_perm_recursive(0, 2000, 0755, 0755, "/system/etc/init.d/99sooplus");
 set_perm_recursive(0, 0, 0644, 0644, "/system/lib/modules");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/bin/fstrim");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin/7za");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/bin/mpdecision");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/bin/thermal-engine-hh");
+
+set_perm(0, 0, 0777, "/tmp/systemcheck.sh");
+run_program("/tmp/systemcheck.sh");
 
 set_perm(0, 0, 0777, "/tmp/buildconfig.sh");
 run_program("/tmp/buildconfig.sh");
