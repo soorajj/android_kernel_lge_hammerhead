@@ -355,7 +355,7 @@ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
 
 MODFLAGS        = -DMODULE \
-                  -march=armv7-a \
+                  -mcpu=cortex-a15 \
                   -mfpu=neon-vfpv4 \
                   -mtune=cortex-a15 \
                   -O3 \
@@ -365,7 +365,7 @@ MODFLAGS        = -DMODULE \
 CFLAGS_MODULE   = $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
-CFLAGS_KERNEL   = -march=armv7-a \
+CFLAGS_KERNEL   = -mcpu=cortex-a15 \
                   -mfpu=neon-vfpv4 \
                   -mtune=cortex-a15 \
                   -O3 \
