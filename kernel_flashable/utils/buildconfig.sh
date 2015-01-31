@@ -156,7 +156,7 @@ fi
 #CPU Governor
 CPU=`grep selected.0 /tmp/aroma/cpu.prop | cut -d '=' -f2`
 echo -e "\n\n##### CPU Gov settings #####\n# 0 to Ondemand Governor" >> $CONFIGFILE
-echo -e "# 1 to enable interactive gov\n# 2 for sooplus governor\n# 3 for smartmax governor\n# 4 for zzmoove governor\n# 5 for intellimm governor\n" >> $CONFIGFILE
+echo -e "# 1 to enable interactive gov\n# 2 for sooplus governor\n# 3 for smartmax governor\n# 4 for zzmoove governor\n# 5 for intellimm governor\n# 6 for yankactive governor\n" >> $CONFIGFILE
 if [ "$CPU" = 2 ]; then
   echo "CPU=1" >> $CONFIGFILE;
 elif [ "$CPU" = 3 ]; then
@@ -167,14 +167,26 @@ elif [ "$CPU" = 5 ]; then
   echo "CPU=4" >> $CONFIGFILE;
 elif [ "$CPU" = 6 ]; then
   echo "CPU=5" >> $CONFIGFILE;
+elif [ "$CPU" = 7 ]; then
+  echo "CPU=6" >> $CONFIGFILE;
 else
   echo "CPU=0" >> $CONFIGFILE;
+fi
+
+#Hot plug
+HP=`grep selected.0 /tmp/aroma/plug.prop | cut -d '=' -f2`
+echo -e "\n\n##### Hotplug driver settings #####\n# 0 to enable qcom mpdecision (StocK)" >> $CONFIGFILE
+echo -e "# 1 to enable bricked mpdecision\n" >> $CONFIGFILE
+if [ "$HP" = 2 ]; then
+  echo "HP=1" >> $CONFIGFILE;
+else
+  echo "HP=0" >> $CONFIGFILE;
 fi
 
 #i/o scheduler
 SCHED=`grep selected.1 /tmp/aroma/disk.prop | cut -d '=' -f2`
 echo -e "\n\n##### i/o Scheduler #####\n# 1 CFQ (stock)" >> $CONFIGFILE
-echo -e "# 2 ROW (default)\n# 3 deadline\n# 4 noop\n# 5 fiops\n# 6 sio\n# 7 bfq\n" >> $CONFIGFILE
+echo -e "# 2 ROW (default)\n# 3 deadline\n# 4 FIOPS\n# 5 SIO\n# 6 BFQ\n" >> $CONFIGFILE
 if [ $SCHED = 1 ]; then
   echo "SCHED=1" >> $CONFIGFILE;
 elif [ $SCHED = 2 ]; then
@@ -187,8 +199,6 @@ elif [ $SCHED = 5 ]; then
   echo "SCHED=5" >> $CONFIGFILE;
 elif [ $SCHED = 6 ]; then
   echo "SCHED=6" >> $CONFIGFILE;
-elif [ $SCHED = 7 ]; then
-  echo "SCHED=7" >> $CONFIGFILE;
 fi
 
 #Readahead buffer size

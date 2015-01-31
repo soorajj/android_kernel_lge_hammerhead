@@ -31,10 +31,10 @@
 # * AROMA Temporary Dir = /tmp/aroma/
 
 ini_set("rom_name", "Sooplus");
-ini_set("rom_version", "01.24");
+ini_set("rom_version", "01.30");
 ini_set("rom_author", "soorajj");
 ini_set("rom_device", "hammerhead");
-ini_set("rom_date", "24-01-2015-00.19.39");
+ini_set("rom_date", "30-01-2015-13.07.40");
 
 theme("renovate");
 
@@ -155,10 +155,9 @@ selectbox(
   "CFQ","(stock)",0,
   "ROW","(default)",1,
   "deadline","",0,
-  "noop","",0,
-  "fiops","",0,
-  "sio","",0,
-  "bfq","",0,
+  "FIOPS","",0,
+  "SIO","",0,
+  "BFQ","",0,
 
   "Select readahead buffer size","",2,
   "128","(stock)",0,
@@ -177,11 +176,18 @@ checkbox(
 selectbox(
   "Governor Settings","<b>Select the CPU Governor</b>","","cpu.prop",
   "ondemand governor","Stock",1,
-  "interactive governor","",0,
+  "interactive governor","balanced",0,
   "sooplus governor","based on wheatley governor",0,
   "smartmax","",0,
   "zzmoove","",0,
-  "intellimm","",0
+  "intellimm","",0,
+  "yankactive","",0
+);
+
+selectbox(
+  "Hotplug Settings","<b>Select the Hotplug driver</b>","","plug.prop",
+  "Qcom Mpdecision","Stock",1,
+  "Bricked Mpdecision","",0
 );
 
 checkbox(

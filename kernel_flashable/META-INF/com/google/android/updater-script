@@ -12,12 +12,8 @@ endif;
 
 set_progress(0.3);
 
-package_extract_dir("kernel", "/tmp");
+package_extract_dir("utils", "/tmp");
 set_perm(0, 0, 0777, "/tmp/busybox");
-set_perm(0, 0, 0777, "/tmp/lz4");
-set_perm(0, 0, 0777, "/tmp/makebootimg.sh");
-set_perm(0, 0, 0777, "/tmp/mkbootfs");
-set_perm(0, 0, 0777, "/tmp/mkbootimg");
 package_extract_dir("backup_files", "/tmp");
 set_perm(0, 0, 0777, "/tmp/backupkernel.sh");
 
@@ -202,15 +198,13 @@ delete_recursive("/system/etc/sooplus.conf");
 ui_print("Installing system files");
 package_extract_dir("system", "/system");
 
-set_perm_recursive(0, 2000, 0755, 0755, "/system/etc/init.d/99sooplus");
 set_perm_recursive(0, 0, 0644, 0644, "/system/lib/modules");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/bin/fstrim");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin/7za");
 
-set_perm(0, 0, 0777, "/tmp/systemcheck.sh");
-run_program("/tmp/systemcheck.sh");
-
 set_perm(0, 0, 0777, "/tmp/buildconfig.sh");
+set_perm(0, 0, 0777, "/tmp/compatibility.sh");
+run_program("/tmp/compatibility.sh");
 run_program("/tmp/buildconfig.sh");
 run_program("/tmp/busybox", "cp", "/tmp/sooplus.conf", "/system/etc/sooplus.conf");
 
@@ -223,9 +217,7 @@ if
    run_program("/tmp/backupkernel.sh");
 endif;
 
-run_program("/tmp/makebootimg.sh");
-ui_print("Installing Kernel");
-run_program("/tmp/busybox", "dd", "if=/tmp/boot.img", "of=/dev/block/platform/msm_sdcc.1/by-name/boot");
+package_extract_file("boot.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
 
 set_progress(0.8);
 
