@@ -184,12 +184,6 @@ selectbox(
   "yankactive","",0
 );
 
-selectbox(
-  "Hotplug Settings","<b>Select the Hotplug driver</b>","","plug.prop",
-  "Qcom Mpdecision","Stock",1,
-  "Bricked Mpdecision","",0
-);
-
 checkbox(
   "Kernel backup","<b>Select to backup current kernel to flashable zip</b>","@personalize","bak.prop",
   "Backup current kernel","",0

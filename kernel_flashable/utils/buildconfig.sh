@@ -173,16 +173,6 @@ else
   echo "CPU=0" >> $CONFIGFILE;
 fi
 
-#Hot plug
-HP=`grep selected.0 /tmp/aroma/plug.prop | cut -d '=' -f2`
-echo -e "\n\n##### Hotplug driver settings #####\n# 0 to enable qcom mpdecision (StocK)" >> $CONFIGFILE
-echo -e "# 1 to enable bricked mpdecision\n" >> $CONFIGFILE
-if [ "$HP" = 2 ]; then
-  echo "HP=1" >> $CONFIGFILE;
-else
-  echo "HP=0" >> $CONFIGFILE;
-fi
-
 #i/o scheduler
 SCHED=`grep selected.1 /tmp/aroma/disk.prop | cut -d '=' -f2`
 echo -e "\n\n##### i/o Scheduler #####\n# 1 CFQ (stock)" >> $CONFIGFILE
