@@ -98,6 +98,7 @@ rm -f arch/arm/boot/Image >> /dev/null;
 rm -f zImage >> /dev/null;
 rm -f zImage-dtb >> /dev/null;
 rm -f boot.img >> /dev/null;
+rm -f ramdisk.gz >> /dev/null;
 git clean -f -d
 git reset --hard
 echo "everything completed."
