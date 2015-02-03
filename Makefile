@@ -247,8 +247,8 @@ GRAPHITE_FLAGS = -fgraphite -floop-parallelize-all -ftree-loop-linear -floop-int
 
 HOSTCC       = ccache gcc
 HOSTCXX      = ccache g++
-HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -fgcse-las
-HOSTCXXFLAGS = -O3 -fgcse-las
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -Ofast -fomit-frame-pointer -fgcse-las
+HOSTCXXFLAGS = -Ofast -fgcse-las
 HOSTCXXFLAGS += $(GRAPHITE_FLAGS)
 HOSTCFLAGS += $(GRAPHITE_FLAGS)
 
@@ -358,7 +358,7 @@ MODFLAGS        = -DMODULE \
                   -mcpu=cortex-a15 \
                   -mfpu=neon-vfpv4 \
                   -mtune=cortex-a15 \
-                  -O3 \
+                  -Ofast \
                   -fgcse-las \
                   -Wno-error=implicit-function-declaration
 
@@ -368,7 +368,7 @@ LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
 CFLAGS_KERNEL   = -mcpu=cortex-a15 \
                   -mfpu=neon-vfpv4 \
                   -mtune=cortex-a15 \
-                  -O3 \
+                  -Ofast \
                   -fgcse-las \
                   -fpredictive-commoning \
 		  -Wno-error=implicit-function-declaration
@@ -586,7 +586,7 @@ all: vmlinux
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os $(call cc-disable-warning,maybe-uninitialized,)
 else
-KBUILD_CFLAGS	+= -O3
+KBUILD_CFLAGS	+= -Ofast
 KBUILD_CFLAGS	+=  $(GRAPHITE_FLAGS)
 endif
 
