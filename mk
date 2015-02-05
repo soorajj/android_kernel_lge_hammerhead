@@ -67,7 +67,7 @@ cp arch/arm/boot/zImage-dtb zImage
 	echo "***** Ramdisk Generation Completed Successfully *****"
 
 echo "making boot.img"
-./utils/mkbootimg --kernel zImage --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=hammerhead user_debug=31 maxcpus=2 msm_watchdog_v2.enable=1' --base 0x00000000 --pagesize 2048 --ramdisk_offset 0x02900000 --tags_offset 0x02700000 --ramdisk ramdisk.gz --output boot.img
+./utils/mkbootimg --kernel zImage --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=hammerhead user_debug=31 maxcpus=2 msm_watchdog_v2.enable=1 androidboot.selinux=permissive' --base 0x00000000 --pagesize 2048 --ramdisk_offset 0x02900000 --tags_offset 0x02700000 --ramdisk ramdisk.gz --output boot.img
 echo "copying boot.img to $OUT_DIR..."
 cp boot.img $OUT_DIR
 echo "[BUILD]: Changing aroma version/data/device to: $ARCHIVE_FILE...";
