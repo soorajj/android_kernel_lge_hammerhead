@@ -17,12 +17,12 @@ if [ ! -d /system/etc/init.d ]; then
    $BB chmod -R 755 /system/etc/init.d;
 fi
 
-if [ -e /system/bin/thermal-engine-hh_bck ] ; then
-	$BB mv /system/bin/thermal-engine-hh_bck /system/bin/thermal-engine-hh
+if [ -e /system/bin/thermal-engine-hh ] ; then
+	$BB mv /system/bin/thermal-engine-hh /system/bin/thermal-engine-hh_bck
 fi
 
-if [ -e /system/bin/mpdecision_bck ] ; then
-	$BB mv /system/bin/mpdecision_bck /system/bin/mpdecision
+if [ -e /system/bin/mpdecision ] ; then
+	$BB mv /system/bin/mpdecision /system/bin/mpdecision_bck
 fi
 
 return $?
