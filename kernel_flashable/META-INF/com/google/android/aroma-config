@@ -184,6 +184,14 @@ selectbox(
   "yankactive","",0
 );
 
+selectbox(
+  "Power suspend","<b>New kernel power management driver</b>","","power.prop",
+  "AUTOSLEEP","",0,
+  "USERSPACE","",1,
+  "LCD_PANEL","",0,
+  "HYBRID","",0
+);
+
 checkbox(
   "Kernel backup","<b>Select to backup current kernel to flashable zip</b>","@personalize","bak.prop",
   "Backup current kernel","",1

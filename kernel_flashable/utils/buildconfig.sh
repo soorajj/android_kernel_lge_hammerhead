@@ -145,15 +145,19 @@ else
   echo "TB=0" >> $CONFIGFILE;
 fi
 
-#Max screen off frequency
-#MAXSCROFF=`grep "item.0.4" /tmp/aroma/mods.prop | cut -d '=' -f2`
-#echo -e "\n\n##### Max screen off frequency #####\n# 0 to disable Max screen off frequency" >> $CONFIGFILE
-#echo -e "# 1 to enable Max screen off frequency\n" >> $CONFIGFILE
-#if [ $MAXSCROFF = 1 ]; then
-#  echo "MAXSCROFF=1" >> $CONFIGFILE;
-#else
-#  echo "MAXSCROFF=0" >> $CONFIGFILE;
-#fi
+#Power suspend
+PWR=`grep selected.0 /tmp/aroma/power.prop | cut -d '=' -f2`
+echo -e "\n\n##### CPU Gov settings #####\n# 0 for AUTOSLEEP" >> $CONFIGFILE
+echo -e "# 1 for USERSPACE\n# 2 for LCD_PANEL\n# 3 for HYBRID\n" >> $CONFIGFILE
+if [ "$PWR" = 2 ]; then
+  echo "PWR=1" >> $CONFIGFILE;
+elif [ "$PWR" = 3 ]; then
+  echo "PWR=2" >> $CONFIGFILE;
+elif [ "$PWR" = 4 ]; then
+  echo "PWR=3" >> $CONFIGFILE;
+else
+  echo "PWR=0" >> $CONFIGFILE;
+fi
 
 #CPU Governor
 CPU=`grep selected.0 /tmp/aroma/cpu.prop | cut -d '=' -f2`
