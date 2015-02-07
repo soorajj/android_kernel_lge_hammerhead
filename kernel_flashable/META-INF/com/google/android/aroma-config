@@ -169,7 +169,8 @@ checkbox(
   "Other settings","<b>Select the mods you want to install</b>","@personalize","mods.prop",
   "Enable USB fastcharge","",0,
   "multicore power saving","this will group task into least possible cores",0,
-  "Backlight dimmer","Allows reduced screen brightness",0
+  "Backlight dimmer","Allows reduced screen brightness",0,
+  "Touch boost","Mpdecision touch boost",0
 );
 
 selectbox(

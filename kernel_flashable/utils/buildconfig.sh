@@ -135,6 +135,16 @@ else
   echo "BL=0" >> $CONFIGFILE;
 fi
 
+#Mpdec touch boost
+TB=`grep "item.0.4" /tmp/aroma/mods.prop | cut -d '=' -f2`
+echo -e "\n\n##### Mpdec touch boost Settings #####\n# 0 to disable mpdec touch boost" >> $CONFIGFILE
+echo -e "# 1 to enable mpdec touch boost\n" >> $CONFIGFILE
+if [ $TB = 1 ]; then
+  echo "TB=1" >> $CONFIGFILE;
+else
+  echo "TB=0" >> $CONFIGFILE;
+fi
+
 #Max screen off frequency
 #MAXSCROFF=`grep "item.0.4" /tmp/aroma/mods.prop | cut -d '=' -f2`
 #echo -e "\n\n##### Max screen off frequency #####\n# 0 to disable Max screen off frequency" >> $CONFIGFILE
