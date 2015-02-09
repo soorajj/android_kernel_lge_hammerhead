@@ -190,8 +190,6 @@ void __init msm8974_add_drivers(void)
 	tsens_tm_init_driver();
 #ifdef CONFIG_BRICKED_THERMAL
 	msm_thermal_init(&msm_thermal_pdata);
-#else
-	msm_thermal_device_init();
 #endif
 	lge_add_persistent_device();
 #if defined (CONFIG_BCMDHD) || defined (CONFIG_BCMDHD_MODULE)
