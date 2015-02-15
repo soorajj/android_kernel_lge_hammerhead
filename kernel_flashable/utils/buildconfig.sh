@@ -139,15 +139,25 @@ fi
 LC=`grep "item.0.4" /tmp/aroma/mods.prop | cut -d '=' -f2`
 echo -e "\n\n##### LOGCAT Settings #####\n# 0 to disable Logcat" >> $CONFIGFILE
 echo -e "# 1 to enable logcat\n" >> $CONFIGFILE
-if [ $TB = 1 ]; then
+if [ $LC = 1 ]; then
   echo "LC=0" >> $CONFIGFILE;
 else
   echo "LC=1" >> $CONFIGFILE;
 fi
 
+#GPU Governor
+GPU=`grep "item.0.6" /tmp/aroma/mods.prop | cut -d '=' -f2`
+echo -e "\n\n##### GPU Governor Settings #####\n# 0 to enable ondemand GPU Governor" >> $CONFIGFILE
+echo -e "# 1 to enable simple GPU governor\n" >> $CONFIGFILE
+if [ $GPU = 1 ]; then
+  echo "GPU=1" >> $CONFIGFILE;
+else
+  echo "GPU=0" >> $CONFIGFILE;
+fi
+
 #Power suspend
 PWR=`grep selected.0 /tmp/aroma/power.prop | cut -d '=' -f2`
-echo -e "\n\n##### CPU Gov settings #####\n# 0 for AUTOSLEEP" >> $CONFIGFILE
+echo -e "\n\n##### Power suspend settings #####\n# 0 for AUTOSLEEP" >> $CONFIGFILE
 echo -e "# 1 for USERSPACE\n# 2 for LCD_PANEL\n# 3 for HYBRID\n" >> $CONFIGFILE
 if [ "$PWR" = 2 ]; then
   echo "PWR=1" >> $CONFIGFILE;
@@ -157,6 +167,22 @@ elif [ "$PWR" = 4 ]; then
   echo "PWR=3" >> $CONFIGFILE;
 else
   echo "PWR=0" >> $CONFIGFILE;
+fi
+
+#BLX
+BLX=`grep selected.0 /tmp/aroma/blx.prop | cut -d '=' -f2`
+echo -e "\n\n##### Battery life extender settings #####\n# 0 for 96%" >> $CONFIGFILE
+echo -e "# 1 for 97%\n# 2 for 98%\n# 3 for 99%\n# 4 for 100%\n" >> $CONFIGFILE
+if [ "$BLX" = 2 ]; then
+  echo "BLX=1" >> $CONFIGFILE;
+elif [ "$BLX" = 3 ]; then
+  echo "BLX=2" >> $CONFIGFILE;
+elif [ "$BLX" = 4 ]; then
+  echo "BLX=3" >> $CONFIGFILE;
+elif [ "$BLX" = 5 ]; then
+  echo "BLX=4" >> $CONFIGFILE;
+elif [ "$BLX" = 1 ]; then
+  echo "BLX=0" >> $CONFIGFILE;
 fi
 
 #CPU Governor
