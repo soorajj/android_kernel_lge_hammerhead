@@ -25,12 +25,12 @@
 		{RECLAIM_WB_ASYNC,	"RECLAIM_WB_ASYNC"}	\
 		) : "RECLAIM_WB_NONE"
 
-#define trace_reclaim_flags(page) ( \
+#define trace_reclaim_flags(page, sync) ( \
 	(page_is_file_cache(page) ? RECLAIM_WB_FILE : RECLAIM_WB_ANON) | \
 	(RECLAIM_WB_ASYNC) \
 	)
 
-#define trace_shrink_flags(file) \
+#define trace_shrink_flags(file, sync) \
 	( \
 		(file ? RECLAIM_WB_FILE : RECLAIM_WB_ANON) | \
 		(RECLAIM_WB_ASYNC) \
