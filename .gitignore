@@ -32,7 +32,14 @@ modules.builtin
 *.lzo
 *.patch
 *.gcno
-
+#
+# Sooplus
+#
+mk
+commit
+patch.list
+kernel_flashable/
+utils/
 #
 # Top-level generic files
 #
